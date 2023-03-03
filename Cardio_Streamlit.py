@@ -26,7 +26,6 @@ CR='\n'
 
 # In[ ]:
 
-
 @st.cache_resource
 def load_model_local():
 
@@ -281,25 +280,6 @@ else:
 st.subheader(f'Probability of cardiovascular disease is about :{value_color}[{disease_proba : .1%}]')
 
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
 
 
 'NO errors'
