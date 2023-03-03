@@ -1,13 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[5]:
-
-
-# !pip install streamlit
-
-
-# In[4]:
+# In[2]:
 
 
 import pandas as pd
@@ -18,7 +12,7 @@ import joblib
 import sklearn
 
 
-# In[ ]:
+# In[3]:
 
 
 PATH_APP_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6. Кардио/Streamlit_app/'
@@ -27,7 +21,7 @@ PATH_DATA_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6. Ка�
 CR='\n'
 
 
-# In[ ]:
+# In[4]:
 
 
 @st.cache_resource
@@ -39,7 +33,7 @@ def load_model_local():
 #     model = joblib.load(f'{LOCAL_PATH}model_dump.mdl')
 
 
-# In[ ]:
+# In[5]:
 
 
 @st.cache_data
@@ -48,7 +42,7 @@ def load_data_local(df_name, n_rows=5):
     return df
 
 
-# In[ ]:
+# In[6]:
 
 
 @st.cache_data
@@ -81,7 +75,7 @@ def target_encode(df_train, df_test, feature_list, target, agg_func_list=['mean'
 
 
 
-# In[ ]:
+# In[7]:
 
 
 # заголовок приложения
@@ -91,14 +85,14 @@ st.title('Cardiovascular disease prediction')
 st.text(f'Enter your details on the left side of the screen.{CR}The prediction will change as data is entered.')
 
 
-# In[ ]:
+# In[8]:
 
 
 # загрузка модели из файла
 model = load_model_local()
 
 
-# In[ ]:
+# In[9]:
 
 
 # загрузка обучающих данных из файла
@@ -108,7 +102,7 @@ model = load_model_local()
 data_train = load_data_local('EDA_train.csv', n_rows=None)
 
 
-# In[ ]:
+# In[10]:
 
 
 # # НЕ ИСПОЛЬЗУЕТСЯ (ПОКА)
@@ -127,7 +121,7 @@ data_train = load_data_local('EDA_train.csv', n_rows=None)
 
 
 
-# In[ ]:
+# In[11]:
 
 
 # ввод данных с экрана
@@ -168,7 +162,7 @@ with st.sidebar:
     active = 1 if 'Physical activity' in habits else 0
 
 
-# In[ ]:
+# In[12]:
 
 
 # объединение введенных данных в мини-таблицу (из одной строки)
@@ -188,7 +182,7 @@ data_test = pd.DataFrame(data={'gender':[gender],
                         )
 
 
-# In[ ]:
+# In[13]:
 
 
 # feature engineering
@@ -201,7 +195,7 @@ for df in [data_train, data_test]:
     df['aplo_bined'] = pd.cut(df.ap_lo, bins=np.linspace(0, 150, 16), labels=False)
 
 
-# In[ ]:
+# In[14]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -209,7 +203,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[ ]:
+# In[15]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -217,7 +211,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[ ]:
+# In[16]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -225,7 +219,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[ ]:
+# In[17]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -233,7 +227,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[ ]:
+# In[18]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -241,7 +235,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[ ]:
+# In[19]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -249,7 +243,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[ ]:
+# In[20]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -257,14 +251,14 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[ ]:
+# In[21]:
 
 
 # прогноз для введенных с экрана данных
 data_test['cardio'] = model.predict_proba(data_test)[:,1]
 
 
-# In[8]:
+# In[22]:
 
 
 # вывод результата
@@ -299,7 +293,7 @@ st.subheader(f'Probability of cardiovascular disease is about :{value_color}[{di
 
 
 
-# In[ ]:
+# In[23]:
 
 
 'NO errors'
@@ -313,7 +307,7 @@ st.subheader(f'Probability of cardiovascular disease is about :{value_color}[{di
 # 
 # `streamlit run https://raw.githubusercontent.com/streamlit/demo-uber-nyc-pickups/master/streamlit_app.py`
 
-# In[ ]:
+# In[24]:
 
 
 # !streamlit run Cardio_Streamlit.py
