@@ -15,8 +15,11 @@ import joblib
 # In[ ]:
 
 
-PATH_APP_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6. Кардио/Streamlit_app/'
-PATH_DATA_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6. Кардио/datasets/'
+# PATH_APP_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6_Cardio/Streamlit_app/'
+# PATH_DATA_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6_Cardio/datasets/'
+
+PATH_APP_LOCAL = ''
+PATH_DATA_LOCAL = ''
 
 CR='\n'
 
@@ -27,10 +30,10 @@ CR='\n'
 @st.cache_resource
 def load_model_local():
 
-#     with open(f'{PATH_APP_LOCAL}model_dump.pcl', 'rb') as model_dump:
+#     with open(f'{PATH_DATA_LOCAL}model_dump.pcl', 'rb') as model_dump:
 #         model = pickle.load(model_dump)
         
-    model = joblib.load(f'{PATH_APP_LOCAL}model_dump.mdl')
+    model = joblib.load(f'{PATH_DATA_LOCAL}model_dump.mdl')
 
     return model
     
@@ -302,18 +305,12 @@ st.subheader(f'Probability of cardiovascular disease is about :{value_color}[{di
 'NO errors'
 
 
-# чтобы запустить приложение необходимо ввести в терминале:
-# 
-# `streamlit run 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6. Кардио/Streamlit_app/Cardio_Streamlit.py' [-- script args]`
-# 
-# для запуска кода из репозитория GitHub (указать правильный адрес):
-# 
-# `streamlit run https://raw.githubusercontent.com/streamlit/demo-uber-nyc-pickups/master/streamlit_app.py`
+# для удаленного запуска приложения из репозитория GitHub:
 
-# In[ ]:
+#     streamlit run https://github.com/Nanobelka/Cardiovascular-disease-prediction/blob/main/Cardio_Streamlit.py
 
+# для локального запуска приложения
 
-# !streamlit run Cardio_Streamlit.py
-
-
-# streamlit run D:/Cardio_Streamlit.py
+#     d:  
+#     cd DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6_Cardio/Streamlit_app  
+#     streamlit run Cardio_Streamlit.py  
