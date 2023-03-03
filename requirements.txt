@@ -5,4 +5,3 @@ joblib
 imblearn
 xgboost
 sklearn
-scikit-learn
