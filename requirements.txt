@@ -4,4 +4,5 @@ numpy
 joblib
 imblearn
 xgboost
+sklearn
 scikit-learn
