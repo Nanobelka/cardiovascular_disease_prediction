@@ -19,13 +19,13 @@ import sklearn
 # PATH_DATA_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6_Cardio/datasets/'
 
 PATH_APP_LOCAL = ''
-# PATH_DATA_LOCAL = 'https://github.com/Nanobelka/Cardiovascular-disease-prediction/blob/main/'
 PATH_DATA_LOCAL = ''
 
 CR='\n'
 
 
 # In[ ]:
+
 
 @st.cache_resource
 def load_model_local():
@@ -119,6 +119,15 @@ data_train = load_data_local('EDA_train.csv', n_rows=None)
 # # прогноз для загруженных данных
 # data['cardio'] = model.predict_proba(data)[:,1]
 # # st.dataframe(data)
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
 
 
 # ввод данных с экрана
@@ -272,6 +281,25 @@ else:
 st.subheader(f'Probability of cardiovascular disease is about :{value_color}[{disease_proba : .1%}]')
 
 
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
 
 
 'NO errors'
@@ -280,6 +308,8 @@ st.subheader(f'Probability of cardiovascular disease is about :{value_color}[{di
 # для удаленного запуска приложения из репозитория GitHub:
 
 #     streamlit run https://github.com/Nanobelka/Cardiovascular-disease-prediction/blob/main/Cardio_Streamlit.py
+
+#     streamlit run https://raw.githubusercontent.com/Nanobelka/Cardiovascular-disease-prediction/main/Cardio_Streamlit.py
 
 # для локального запуска приложения
 
