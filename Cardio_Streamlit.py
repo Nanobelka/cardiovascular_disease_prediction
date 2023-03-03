@@ -111,14 +111,14 @@ data_train = load_data_local('EDA_train.csv', n_rows=None)
 # In[ ]:
 
 
-# НЕ ИСПОЛЬЗУЕТСЯ (ПОКА)
+# # НЕ ИСПОЛЬЗУЕТСЯ (ПОКА)
 
-# загрузка предобработанных (после feature engineering) тестовых данных из файла
-data = load_data_local('FE_test.csv', n_rows=3)
+# # загрузка предобработанных (после feature engineering) тестовых данных из файла
+# data = load_data_local('FE_test.csv', n_rows=3)
 
-# прогноз для загруженных данных
-data['cardio'] = model.predict_proba(data)[:,1]
-# st.dataframe(data)
+# # прогноз для загруженных данных
+# data['cardio'] = model.predict_proba(data)[:,1]
+# # st.dataframe(data)
 
 
 # In[ ]:
