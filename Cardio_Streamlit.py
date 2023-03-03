@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[4]:
 
 
 import pandas as pd
@@ -12,7 +12,7 @@ import joblib
 import sklearn
 
 
-# In[3]:
+# In[ ]:
 
 
 PATH_APP_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6. Кардио/Streamlit_app/'
@@ -21,19 +21,22 @@ PATH_DATA_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6. Ка�
 CR='\n'
 
 
-# In[4]:
+# In[ ]:
 
 
 @st.cache_resource
 def load_model_local():
-    with open(f'{PATH_APP_LOCAL}model_dump.pcl', 'rb') as model_dump:
-        model = pickle.load(model_dump)
+
+#     with open(f'{PATH_APP_LOCAL}model_dump.pcl', 'rb') as model_dump:
+#         model = pickle.load(model_dump)
+        
+    model = joblib.load(f'{PATH_APP_LOCAL}model_dump.mdl')
+
     return model
     
-#     model = joblib.load(f'{LOCAL_PATH}model_dump.mdl')
 
 
-# In[5]:
+# In[ ]:
 
 
 @st.cache_data
@@ -42,7 +45,7 @@ def load_data_local(df_name, n_rows=5):
     return df
 
 
-# In[6]:
+# In[ ]:
 
 
 @st.cache_data
@@ -75,7 +78,7 @@ def target_encode(df_train, df_test, feature_list, target, agg_func_list=['mean'
 
 
 
-# In[7]:
+# In[ ]:
 
 
 # заголовок приложения
@@ -85,14 +88,14 @@ st.title('Cardiovascular disease prediction')
 st.text(f'Enter your details on the left side of the screen.{CR}The prediction will change as data is entered.')
 
 
-# In[8]:
+# In[ ]:
 
 
 # загрузка модели из файла
 model = load_model_local()
 
 
-# In[9]:
+# In[ ]:
 
 
 # загрузка обучающих данных из файла
@@ -102,7 +105,7 @@ model = load_model_local()
 data_train = load_data_local('EDA_train.csv', n_rows=None)
 
 
-# In[10]:
+# In[ ]:
 
 
 # # НЕ ИСПОЛЬЗУЕТСЯ (ПОКА)
@@ -121,7 +124,7 @@ data_train = load_data_local('EDA_train.csv', n_rows=None)
 
 
 
-# In[11]:
+# In[ ]:
 
 
 # ввод данных с экрана
@@ -162,7 +165,7 @@ with st.sidebar:
     active = 1 if 'Physical activity' in habits else 0
 
 
-# In[12]:
+# In[ ]:
 
 
 # объединение введенных данных в мини-таблицу (из одной строки)
@@ -182,7 +185,7 @@ data_test = pd.DataFrame(data={'gender':[gender],
                         )
 
 
-# In[13]:
+# In[ ]:
 
 
 # feature engineering
@@ -195,7 +198,7 @@ for df in [data_train, data_test]:
     df['aplo_bined'] = pd.cut(df.ap_lo, bins=np.linspace(0, 150, 16), labels=False)
 
 
-# In[14]:
+# In[ ]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -203,7 +206,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[15]:
+# In[ ]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -211,7 +214,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[16]:
+# In[ ]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -219,7 +222,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[17]:
+# In[ ]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -227,7 +230,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[18]:
+# In[ ]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -235,7 +238,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[19]:
+# In[ ]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -243,7 +246,7 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[20]:
+# In[ ]:
 
 
 data_test = target_encode(data_train, data_test,
@@ -251,14 +254,14 @@ data_test = target_encode(data_train, data_test,
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
 
-# In[21]:
+# In[ ]:
 
 
 # прогноз для введенных с экрана данных
 data_test['cardio'] = model.predict_proba(data_test)[:,1]
 
 
-# In[22]:
+# In[8]:
 
 
 # вывод результата
@@ -293,7 +296,7 @@ st.subheader(f'Probability of cardiovascular disease is about :{value_color}[{di
 
 
 
-# In[23]:
+# In[ ]:
 
 
 'NO errors'
@@ -307,7 +310,7 @@ st.subheader(f'Probability of cardiovascular disease is about :{value_color}[{di
 # 
 # `streamlit run https://raw.githubusercontent.com/streamlit/demo-uber-nyc-pickups/master/streamlit_app.py`
 
-# In[24]:
+# In[ ]:
 
 
 # !streamlit run Cardio_Streamlit.py
