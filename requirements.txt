@@ -1,2 +1,6 @@
 streamlit
 pandas
+numpy
+pickle
+joblib
+sklearn
