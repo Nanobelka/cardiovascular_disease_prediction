@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[4]:
+
 
 import pandas as pd
 import numpy as np
@@ -8,16 +10,12 @@ import streamlit as st
 # import pickle
 import joblib
 import sklearn
-import xgboost
+
 
 # In[ ]:
 
 
-# PATH_APP_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6_Cardio/Streamlit_app/'
-# PATH_DATA_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6_Cardio/datasets/'
-
-PATH_APP_LOCAL = ''
-PATH_DATA_LOCAL = ''
+PATH_DATA = ''
 
 CR='\n'
 
@@ -28,10 +26,10 @@ CR='\n'
 @st.cache_resource
 def load_model_local():
 
-#     with open(f'{PATH_DATA_LOCAL}model_dump.pcl', 'rb') as model_dump:
+#     with open(f'{PATH_DATA}model_dump.pcl', 'rb') as model_dump:
 #         model = pickle.load(model_dump)
         
-    model = joblib.load(f'{PATH_DATA_LOCAL}model_dump.mdl')
+    model = joblib.load(f'{PATH_DATA}model_dump.mdl')
 
     return model
     
@@ -42,7 +40,7 @@ def load_model_local():
 
 @st.cache_data
 def load_data_local(df_name, n_rows=5):
-    df = pd.read_csv(f'{PATH_DATA_LOCAL}{df_name}', nrows=n_rows)
+    df = pd.read_csv(f'{PATH_DATA}{df_name}', nrows=n_rows)
     return df
 
 
@@ -304,8 +302,6 @@ st.subheader(f'Probability of cardiovascular disease is about :{value_color}[{di
 
 
 # для удаленного запуска приложения из репозитория GitHub:
-
-#     streamlit run https://github.com/Nanobelka/Cardiovascular-disease-prediction/blob/main/Cardio_Streamlit.py
 
 #     streamlit run https://raw.githubusercontent.com/Nanobelka/Cardiovascular-disease-prediction/main/Cardio_Streamlit.py
 
