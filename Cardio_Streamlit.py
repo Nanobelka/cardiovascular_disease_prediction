@@ -28,10 +28,10 @@ CR='\n'
 @st.cache_resource
 def load_model_local():
 
-    with open(f'{PATH_DATA_LOCAL}model_dump.pcl', 'rb') as model_dump:
-        model = pickle.load(model_dump)
+#     with open(f'{PATH_DATA_LOCAL}model_dump.pcl', 'rb') as model_dump:
+#         model = pickle.load(model_dump)
         
-#    model = joblib.load(f'{PATH_DATA_LOCAL}model_dump.mdl')
+   model = joblib.load(f'{PATH_DATA_LOCAL}model_dump.mdl')
 
     return model
     
