@@ -120,15 +120,6 @@ data_train = load_data_local('EDA_train.csv', n_rows=None)
 # # st.dataframe(data)
 
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
 # ввод данных с экрана
 
 with st.sidebar:
