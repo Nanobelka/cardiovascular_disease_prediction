@@ -1,6 +1,7 @@
 streamlit
 pandas
 numpy
+pickle
 joblib
 imblearn
 xgboost
