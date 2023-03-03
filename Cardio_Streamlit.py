@@ -19,7 +19,8 @@ import joblib
 # PATH_DATA_LOCAL = 'D:/DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6_Cardio/datasets/'
 
 PATH_APP_LOCAL = ''
-PATH_DATA_LOCAL = 'https://github.com/Nanobelka/Cardiovascular-disease-prediction/blob/main/'
+# PATH_DATA_LOCAL = 'https://github.com/Nanobelka/Cardiovascular-disease-prediction/blob/main/'
+PATH_DATA_LOCAL = ''
 
 CR='\n'
 
