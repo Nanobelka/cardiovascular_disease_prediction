@@ -3,7 +3,7 @@
 
 # ## Imports
 
-# In[1]:
+# In[2]:
 
 
 import pandas as pd
@@ -12,8 +12,7 @@ import streamlit as st
 import sklearn
 import joblib
 # import pickle
-
-from PIL import Image
+# from PIL import Image
 
 
 # ## Constants
@@ -115,8 +114,14 @@ data_train = load_data_local('EDA_train.csv', n_rows=None)
 # In[ ]:
 
 
-image = Image.open('banner.jpg')
-st.image(image)
+# image = Image.open('banner.jpg')
+# st.image(image)
+
+
+# In[ ]:
+
+
+st.image('banner.jpg')
 
 
 # In[ ]:
