@@ -141,6 +141,8 @@ st.text('The prediction will change as data is entered.')
 
 st.caption('Click on sign in the left upper corner if the panel is hidden.')
 
+st.caption('------')
+
 
 # ## Input data by user
 
@@ -324,11 +326,21 @@ if disease_proba >= 0.5 and alco == 1:
     st.write('**Надо меньше пить!**')
 
 
+# ## Disclamer
+
+# In[ ]:
+
+
+st.caption('------')
+st.caption('**Disclaimer.** The source of the data used for this application is unknown. Therefore, this application can under no circumstances be used for practical purposes. This application is made for demonstration purposes only.')
+
+
 # ## Final service message
 
 # In[ ]:
 
 
+st.caption('------')
 st.caption('*Service info: NO errors*')
 
 
