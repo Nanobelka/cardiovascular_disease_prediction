@@ -1,16 +1,22 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
+# ## Imports
+
+# In[1]:
 
 
 import pandas as pd
 import numpy as np
 import streamlit as st
-# import pickle
-import joblib
 import sklearn
+import joblib
+# import pickle
 
+from PIL import Image
+
+
+# ## Constants
 
 # In[ ]:
 
@@ -19,6 +25,8 @@ PATH_DATA = ''
 
 CR='\n'
 
+
+# ## Functions
 
 # In[ ]:
 
@@ -32,7 +40,6 @@ def load_model_local():
     model = joblib.load(f'{PATH_DATA}model_dump.mdl')
 
     return model
-    
 
 
 # In[ ]:
@@ -71,21 +78,7 @@ def target_encode(df_train, df_test, feature_list, target, agg_func_list=['mean'
     return df_test
 
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-# заголовок приложения
-st.title('Cardiovascular disease prediction')
-
-# пояснительный текст
-st.text(f'Enter your details on the left side of the screen.{CR}The prediction will change as data is entered.')
-
+# ## Loads
 
 # In[ ]:
 
@@ -117,11 +110,26 @@ data_train = load_data_local('EDA_train.csv', n_rows=None)
 # # st.dataframe(data)
 
 
+# ## Output basic info
+
 # In[ ]:
 
 
+image = Image.open('banner.jpg')
+st.image(image)
 
 
+# In[ ]:
+
+
+# заголовок приложения
+st.title('Cardiovascular disease prediction')
+
+# пояснительный текст
+st.text(f'Enter your details on the left side of the screen.{CR}The prediction will change as data is entered.')
+
+
+# ## Input data by user
 
 # In[ ]:
 
@@ -151,9 +159,21 @@ with st.sidebar:
 
     column_1, column_2 = st.columns(2)
     with column_1:
-        cholesterol = st.radio('**Cholesterol**', [1,2,3], key='cholesterol')
+        cholesterol_radio = st.radio('**Cholesterol**', ['normal','above normal','well above normal'], key='cholesterol')
+        if cholesterol_radio == 'normal':
+            cholesterol = 1 
+        elif cholesterol_radio == 'above normal':
+            cholesterol = 2
+        else:
+            cholesterol = 3
     with column_2:
-        gluc = st.radio('**Glucose**', [1,2,3], key='gluc')
+        gluc_radio = st.radio('**Glucose**', ['normal','above normal','well above normal'], key='gluc')
+        if gluc_radio == 'normal':
+            gluc = 1 
+        elif gluc_radio == 'above normal':
+            gluc = 2
+        else:
+            gluc = 3
 
     habits = st.multiselect('**Bad and good habits**',
                             ['Smoking', 'Alcohol intake', 'Physical activity'],
@@ -183,6 +203,8 @@ data_test = pd.DataFrame(data={'gender':[gender],
                               }
                         )
 
+
+# ## Processing user's data
 
 # In[ ]:
 
@@ -260,6 +282,8 @@ data_test = target_encode(data_train, data_test,
 data_test['cardio'] = model.predict_proba(data_test)[:,1]
 
 
+# ## Output prediction
+
 # In[8]:
 
 
@@ -280,26 +304,22 @@ st.subheader(f'Probability of cardiovascular disease is about :{value_color}[{di
 # In[ ]:
 
 
+if disease_proba >= 0.5 and smoke == 1:
+    st.write('**Бросай курить, вставай на лыжи!**')
+    
+if disease_proba >= 0.5 and alco == 1:
+    st.write('**Надо меньше пить!**')
 
 
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
+# ## Final service message
 
 # In[ ]:
 
 
-'NO errors'
+st.caption('*Service info: NO errors*')
 
+
+# ## Remarks
 
 # для удаленного запуска приложения из репозитория GitHub:
 
