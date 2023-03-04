@@ -21,8 +21,13 @@ import joblib
 
 
 PATH_DATA = ''
-
 CR='\n'
+
+# text styles
+class f:
+    BOLD = "\033[1m"
+    ITALIC = "\033[3m"
+    END = "\033[0m"
 
 
 # ## Functions
@@ -131,7 +136,10 @@ st.image('banner.jpg')
 st.title('Cardiovascular disease prediction')
 
 # пояснительный текст
-st.text(f'Enter your details on the left side of the screen.{CR}The prediction will change as data is entered.')
+st.text('Enter your details on the left folding panel.')
+st.text('The prediction will change as data is entered.')
+
+st.caption('Click on sign in the left upper corner if the panel is hidden.')
 
 
 # ## Input data by user
