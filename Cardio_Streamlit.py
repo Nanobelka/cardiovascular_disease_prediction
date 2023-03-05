@@ -30,6 +30,23 @@ class f:
     END = "\033[0m"
 
 
+# ## Settings
+
+# In[ ]:
+
+
+st.set_page_config(
+                   page_title='Cardiovascular disease prediction',
+                   page_icon='⚕️',
+                   initial_sidebar_state='expanded',
+                   menu_items={
+#                                'Get Help': 'https://....',
+#                                'Report a bug': "https://....",
+                               'About': 'Written by Sergei Vasiliev. Fell free contact to me in Telegram @nanobelkads.'
+                              }
+                 )
+
+
 # ## Functions
 
 # In[ ]:
