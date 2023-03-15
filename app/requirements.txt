@@ -1,0 +1,7 @@
+streamlit
+pandas
+numpy
+joblib
+imblearn
+xgboost
+scikit-learn==1.1.3
