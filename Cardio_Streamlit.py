@@ -77,7 +77,7 @@ model = load_model_local()
 # приходится это делать, чтобы выполнить feature engineering
 # можно заменить большой train на несколько небольших таблиц с агрегированными данными
 
-# data_train = load_data_local('EDA_train.csv', n_rows=None)
+data_train = load_data_local('EDA_train.csv', n_rows=None)
 
 
 # ## Output basic info
