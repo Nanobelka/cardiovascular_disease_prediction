@@ -3,37 +3,19 @@
 
 # ## Imports
 
-# In[2]:
-
-
 import pandas as pd
 import numpy as np
 import streamlit as st
 import sklearn
 import joblib
-# import pickle
-# from PIL import Image
-
 
 # ## Constants
-
-# In[ ]:
-
 
 PATH_DATA = ''
 CR='\n'
 
-# text styles
-class f:
-    BOLD = "\033[1m"
-    ITALIC = "\033[3m"
-    END = "\033[0m"
-
 
 # ## Settings
-
-# In[ ]:
-
 
 st.set_page_config(
                    page_title='Cardiovascular disease prediction',
@@ -49,30 +31,16 @@ st.set_page_config(
 
 # ## Functions
 
-# In[ ]:
-
-
 @st.cache_resource
 def load_model_local():
-
-#     with open(f'{PATH_DATA}model_dump.pcl', 'rb') as model_dump:
-#         model = pickle.load(model_dump)
-        
     model = joblib.load(f'{PATH_DATA}model_dump.mdl')
-
     return model
-
-
-# In[ ]:
 
 
 @st.cache_data
 def load_data_local(df_name, n_rows=5):
     df = pd.read_csv(f'{PATH_DATA}{df_name}', nrows=n_rows)
     return df
-
-
-# In[ ]:
 
 
 @st.cache_data
@@ -101,14 +69,8 @@ def target_encode(df_train, df_test, feature_list, target, agg_func_list=['mean'
 
 # ## Loads
 
-# In[ ]:
-
-
 # загрузка модели из файла
 model = load_model_local()
-
-
-# In[ ]:
 
 
 # загрузка обучающих данных из файла
@@ -118,35 +80,9 @@ model = load_model_local()
 data_train = load_data_local('EDA_train.csv', n_rows=None)
 
 
-# In[ ]:
-
-
-# # НЕ ИСПОЛЬЗУЕТСЯ (ПОКА)
-
-# # загрузка предобработанных (после feature engineering) тестовых данных из файла
-# data = load_data_local('FE_test.csv', n_rows=3)
-
-# # прогноз для загруженных данных
-# data['cardio'] = model.predict_proba(data)[:,1]
-# # st.dataframe(data)
-
-
 # ## Output basic info
 
-# In[ ]:
-
-
-# image = Image.open('banner.jpg')
-# st.image(image)
-
-
-# In[ ]:
-
-
 st.image('banner.jpg')
-
-
-# In[ ]:
 
 
 # заголовок приложения
@@ -162,11 +98,6 @@ st.caption('------')
 
 
 # ## Input data by user
-
-# In[ ]:
-
-
-# ввод данных с экрана
 
 with st.sidebar:
 
@@ -216,9 +147,6 @@ with st.sidebar:
     active = 1 if 'Physical activity' in habits else 0
 
 
-# In[ ]:
-
-
 # объединение введенных данных в мини-таблицу (из одной строки)
 
 data_test = pd.DataFrame(data={'gender':[gender],
@@ -238,9 +166,6 @@ data_test = pd.DataFrame(data={'gender':[gender],
 
 # ## Processing user's data
 
-# In[ ]:
-
-
 # feature engineering
 
 for df in [data_train, data_test]:
@@ -251,63 +176,33 @@ for df in [data_train, data_test]:
     df['aplo_bined'] = pd.cut(df.ap_lo, bins=np.linspace(0, 150, 16), labels=False)
 
 
-# In[ ]:
-
-
 data_test = target_encode(data_train, data_test,
                                       feature_list=['gender','aphi_bined','aplo_bined'],
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
-
-
-# In[ ]:
-
 
 data_test = target_encode(data_train, data_test,
                                       feature_list=['gender','age'],
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
-
-# In[ ]:
-
-
 data_test = target_encode(data_train, data_test,
                                       feature_list=['gender','weight_bined','height_bined'],
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
-
-
-# In[ ]:
-
 
 data_test = target_encode(data_train, data_test,
                                       feature_list=['gender','cholesterol','gluc'],
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
-
-# In[ ]:
-
-
 data_test = target_encode(data_train, data_test,
                                       feature_list=['gender','active'],
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
-
-
-# In[ ]:
-
 
 data_test = target_encode(data_train, data_test,
                                       feature_list=['gender','smoke'],
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
 
-
-# In[ ]:
-
-
 data_test = target_encode(data_train, data_test,
                                       feature_list=['gender','alco'],
                                       target='cardio', agg_func_list=['mean'], fill_na=0.5)
-
-
-# In[ ]:
 
 
 # прогноз для введенных с экрана данных
@@ -315,11 +210,6 @@ data_test['cardio'] = model.predict_proba(data_test)[:,1]
 
 
 # ## Output prediction
-
-# In[8]:
-
-
-# вывод результата
 
 disease_proba = data_test.loc[0,"cardio"]
 
@@ -333,9 +223,6 @@ else:
 st.subheader(f'Probability of cardiovascular disease is about :{value_color}[{disease_proba : .1%}]')
 
 
-# In[ ]:
-
-
 if disease_proba >= 0.5 and smoke == 1:
     st.write('**Бросай курить, вставай на лыжи!**')
     
@@ -345,30 +232,11 @@ if disease_proba >= 0.5 and alco == 1:
 
 # ## Disclamer
 
-# In[ ]:
-
-
 st.caption('------')
 st.caption('**Disclaimer.** The source of the data used for this application is unknown. Therefore, this application can under no circumstances be used for practical purposes. This application is made for demonstration purposes only.')
 
 
 # ## Final service message
 
-# In[ ]:
-
-
 st.caption('------')
 st.caption('*Service info: NO errors*')
-
-
-# ## Remarks
-
-# для удаленного запуска приложения из репозитория GitHub:
-
-#     streamlit run https://raw.githubusercontent.com/Nanobelka/Cardiovascular-disease-prediction/main/Cardio_Streamlit.py
-
-# для локального запуска приложения
-
-#     d:  
-#     cd DATA/Work_analytics/Jupyter_Notebook/Praktikum_DS/6_Cardio/Streamlit_app  
-#     streamlit run Cardio_Streamlit.py  
