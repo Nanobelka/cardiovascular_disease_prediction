@@ -17,17 +17,17 @@ Predict risk of heart diseases from patient lifestyle information.
 
 **Задачи проекта:** 
 
-[Exploratory data analysis](https://github.com/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_1_EDA.ipynb)  
+[Exploratory data analysis](https://nbviewer.jupyter.org/github/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_1_EDA.ipynb)  
 - провести исследовательский анализ данных;  
 - исправить ошибки в данных;  
 - подготовить данные для feature engineering  
 
-[Feature engineering](https://github.com/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_2_FE.ipynb)  
+[Feature engineering](https://nbviewer.jupyter.org/github/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_2_FE.ipynb)  
 - исследовать варианты создания новых признаков;  
 - оценить значимость исходных и новых признаков для модели;  
 - подготовить данные для обучения модели.  
 
-[Model selection and Final model](https://github.com/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_3A_Model_Selection_XGBC.ipynb)  
+[Model selection and Final model](https://nbviewer.jupyter.org/github/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_3A_Model_Selection_XGBC.ipynb)  
 - сделать несколько вариантов моделей и выполнить сравнительный запуск;  
 - оценить приемлемое время обучения моделей;  
 - оценить дополнительные метрики моделей;  
