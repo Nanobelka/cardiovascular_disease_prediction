@@ -1,7 +1,4 @@
-# [Cardiovascular disease prediction](https://cardiovascular-disease-prediction.streamlit.app/)
-
-[Research](https://github.com/Nanobelka/cardiovascular_disease_prediction/tree/main/research_and_model)  
-[App](https://cardiovascular-disease-prediction.streamlit.app/)
+# Cardiovascular disease prediction – [Research](https://github.com/Nanobelka/cardiovascular_disease_prediction/tree/main/research_and_model) and [App](https://cardiovascular-disease-prediction.streamlit.app/)
 
 **Task**  
 Predict risk of cardiovascular diseases from patient lifestyle information.
