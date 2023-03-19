@@ -2,9 +2,9 @@
 
 ## На основании параметров обследованных пациентов спрогнозировать вероятность наличия сердечно-сосудистого заболевания.
 
-### [Exploratory data analysis](https://github.com/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_1_EDA.ipynb)  
-### [Feature engineering](https://github.com/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_2_FE.ipynb)  
-### [Model selection and Final model](https://github.com/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_3A_Model_Selection_XGBC.ipynb)  
+### [Exploratory data analysis](https://nbviewer.jupyter.org/github/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_1_EDA.ipynb)  
+### [Feature engineering](https://nbviewer.jupyter.org/github/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_2_FE.ipynb)  
+### [Model selection and Final model](https://nbviewer.jupyter.org/github/Nanobelka/cardiovascular_disease_prediction/blob/main/research_and_model/Cardio_3A_Model_Selection_XGBC.ipynb)  
 ### [Application](https://github.com/Nanobelka/cardiovascular_disease_prediction/blob/main/Cardio_Streamlit.py)
 
 **Входные данные:** параметры обследованных пациентов; данные изначально разделены на обучающий и тестовый наборы.
