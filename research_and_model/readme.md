@@ -38,4 +38,4 @@ Predict risk of heart diseases from patient lifestyle information.
 - подготовить и сохранить submit file.
 
 [Application](https://github.com/Nanobelka/cardiovascular_disease_prediction/blob/main/Cardio_Streamlit.py)
-- используя обученную модель, создать [Streamlit-приложение]((https://cardiovascular-disease-prediction.streamlit.app/)) ([репозиторий приложения](https://github.com/Nanobelka/cardiovascular_disease_prediction))
+- используя обученную модель, создать [Streamlit-приложение](https://cardiovascular-disease-prediction.streamlit.app/).
