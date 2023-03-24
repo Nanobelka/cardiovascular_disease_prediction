@@ -1,3 +1,5 @@
+![Cardiovascular disease prediction: Research & App](https://github.com/Nanobelka/cardiovascular_disease_prediction/blob/main/banner.jpg)
+
 # Cardiovascular disease prediction – [Research](https://github.com/Nanobelka/cardiovascular_disease_prediction/tree/main/research_and_model) and [App](https://cardiovascular-disease-prediction.streamlit.app/)
 
 **Task**  
