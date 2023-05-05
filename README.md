@@ -2,6 +2,8 @@
 
 # Cardiovascular disease prediction – [Research](https://github.com/Nanobelka/cardiovascular_disease_prediction/tree/main/research_and_model) and [App](https://cardiovascular-disease-prediction.streamlit.app/)
 
+##### Project for [Yandex.Workshop](https://github.com/Nanobelka/Yandex_Workshop)
+
 **Task**  
 Predict risk of cardiovascular diseases from patient lifestyle information.
 
